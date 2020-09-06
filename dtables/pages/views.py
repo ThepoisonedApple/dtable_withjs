@@ -1,15 +1,18 @@
 from django.shortcuts import render,redirect
 from tablodene.models import Denemetablo
 from django.test import RequestFactory
+from django.http import HttpResponse
 
 
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login,authenticate,logout
 # Create your views here.
+@login_required
 @staff_member_required(view_func=None, redirect_field_name='',
-                          login_url='login')
+                          login_url="staffonly")
 def home_view(request):
 	data={}
 	x=Denemetablo.objects.all()
@@ -53,3 +56,7 @@ def login_view(request):
 def logout_wov(request):
 	logout(request)
 	return redirect('login')
+
+def staffonly(request):
+	logout(request)
+	return render(request, 'reqlogin.html')
