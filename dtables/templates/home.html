@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<style type="text/css">
-		table {
-  border-collapse: collapse;
-  width: 50%;
-}
+{% extends 'base.html' %} 
 
-table, th, td {
-  border: 1px solid black;
-  padding: 5px;
-  align-self: center;
-}</style>
-</head>
-<body>
+
+{% block content %} 
+
+	{%  include 'navbar.html' %}
+	<div style="width: 100%;padding-left: 10%;padding-right: 10%; padding-top:5px">
 	<table id="table_id" class="display">
 		<thead>
 			<tr>
@@ -59,5 +50,5 @@ table, th, td {
 </script>
 
 {%endblock%}
-</body>
-</html>
+</div>
+{% endblock %}
